@@ -1,17 +1,44 @@
-import { useState } from 'react'
-import favicon from './assets/images/favicon.png'
 import check from './assets/images/check.svg'
 import imgLoginRight from './assets/images/imgRight.svg'
 import './App.css'
+import * as Yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 
-function App() {
-  const { register, handleSubmit } = useForm({
-    mode: 'all'
+const schema = Yup.object().shape({
+  email: Yup.string()
+  .email('Valid email required') // Valida o email 
+  // .required('Email is required') // Diz que é obrigatorio
+})
+
+const asyncFunction = async () => {
+  const myPromise = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('Hello');
+    }, 3000)
   });
 
-  const handleSubmitData = (data) => {
-    console.log('submit', data)
+  return myPromise;
+};
+
+
+function App() {
+
+  const { register, handleSubmit, formState, reset } = useForm({
+    mode: 'all',
+    resolver: yupResolver(schema),
+    defaultValues: {
+      email: ''
+    }
+  });
+
+  const { errors, isSubmitting } = formState;
+
+  console.log("errors: ", errors)
+
+  const handleSubmitData = async (data) => {
+    console.log('submit', data);
+    await asyncFunction();
   }
 
   return (
@@ -39,11 +66,13 @@ function App() {
             </div>
             <form className="formLogin" onSubmit={handleSubmit(handleSubmitData)}>
               <label htmlFor="inputEmail" className="labelInput">Email address</label>
-              <input 
-              {...register("email")}
-              type="text" placeholder="email@company.com" id="inputEmail" className="inputEmail" />
-              <button className="btnLogin" type='submit'>
-                <span className="spanBtnLogin">Subscribe to monthly newsletter</span>
+              <input
+                {...register("email")}
+                type="text" placeholder="email@company.com" id="inputEmail" className="inputEmail"
+                />
+                {errors.email && <p className='errorMensage'>{errors.email.message}</p>}
+              <button className="btnLogin" type='submit' disabled={isSubmitting}>
+                  {isSubmitting ? 'Wait! Sending email' : 'Subscribe to monthly newsletter'}
               </button>
             </form>
           </div>
@@ -57,3 +86,4 @@ function App() {
 }
 
 export default App
+export const dataEmail = "santosjoaogabriel09@gmail.com"
