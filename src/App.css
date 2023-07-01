@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&family=Roboto:wght@700&display=swap');
+
+:root {
+  --primary-tomato: hsl(4, 100%, 67%);
+  --color-darkSlateGrey: hsl(234, 29%, 20%);
+  --color-charcoalGrey: hsl(235, 18%, 26%);
+  --color-grey: hsl(231, 7%, 60%);
+  --color-white: hsl(0, 0%, 100%);
+}
+
+
+.loginPage {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-darkSlateGrey);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.containerLogin {
+  background-color: var(--color-white);
+  width: 55vw;
+  height: 60vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 20px;
+}
+
+/* Right */
+
+.imgLogin {
+  position: relative;
+  width: 23vw;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+/* Left */
+.leftSideLogin {
+  position: relative;
+  margin-left: 60px;
+  margin-right: 20px;
+  width: 55%;
+}
+
+.containerTextLogin {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  margin-bottom: 1.2vw;
+}
+
+.h1Login {
+  position: relative;
+  display: flex;
+  justify-content: start;
+
+  font-size: 48px;
+
+  font-weight: 700;
+  color: var(--color-darkSlateGrey);
+}
+
+.spanLogin {
+  position: relative;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-darkSlateGrey);
+  margin-bottom: .7vw;
+}
+
+
+.comments {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: .7vw;
+}
+
+.sucessSvg {
+  width: 1.2vw;
+}
+
+.commentP {
+  font-weight: 400;
+  margin-left: .7vw;
+  color: var(--color-darkSlateGrey);
+  font-size: 14px;
+}
+
+.formLogin {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.labelInput {
+  font-size: 12px;
+  transform: translateY(.6vw);
+  margin-top: 1.5vw;
+}
+
+.inputEmail {
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 10px;
+  height: 5vh;
+  padding-left: 1.25vw;
+  margin: 2vh 0vw;
+}
+
+.btnLogin {
+  outline: none;
+  border: none;
+  background-color: var(--color-charcoalGrey);
+  color: white;
+  height: 5vh;
+  border-radius: 10px;
+  transition: .3s all ease;
+}
+
+.btnLogin:hover {
+  box-shadow: 0px 2px 15px -1px rgb(22, 0, 32);
+  transform: scale(1.02);
+  /* background: linear-gradient(to right, #808080, #ff6347); */
+}
